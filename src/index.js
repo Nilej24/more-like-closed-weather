@@ -1,8 +1,6 @@
 import './style.scss';
 
-import fetchWeatherOf from './fetchWeather';
+import fetchWeatherOf from './weather';
+import updateDisplayedData from './display';
 
-fetchWeatherOf('lisbon')
-  .then((data) => {
-    console.log(data);
-  });
+fetchWeatherOf('london').then(updateDisplayedData);

@@ -130,13 +130,13 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/fetchWeather.js":
-/*!*****************************!*\
-  !*** ./src/fetchWeather.js ***!
-  \*****************************/
+/***/ "./src/display.js":
+/*!************************!*\
+  !*** ./src/display.js ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nasync function fetchWeatherOf(city) {\n  const key = 'cbe457e67bfce0754a5fcca5bb09dd23';\n  const locationResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`);\n  const locationData = await locationResponse.json();\n\n  const { lon, lat } = locationData[0];\n\n  const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`);\n  const weatherData = await weatherResponse.json();\n\n  return weatherData;\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchWeatherOf);\n\n\n//# sourceURL=webpack://more-like-closed-weather/./src/fetchWeather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction updateDisplayedData(data) {\n  document.querySelector('#location').innerText = data.name;\n  document.querySelector('#country').innerText = data.sys.country;\n  document.querySelector('#weather').innerText = data.weather[0].description;\n  document.querySelector('#temp').innerText = data.main.temp;\n  document.querySelector('#temp-feels-like').innerText = data.main.feels_like;\n  document.querySelector('#humidity').innerText = data.main.humidity;\n  document.querySelector('#windspeed').innerText = data.wind.speed;\n  document.querySelector('#pressure').innerText = data.main.pressure;\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (updateDisplayedData);\n\n\n//# sourceURL=webpack://more-like-closed-weather/./src/display.js?");
 
 /***/ }),
 
@@ -146,7 +146,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n/* harmony import */ var _fetchWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fetchWeather */ \"./src/fetchWeather.js\");\n\n\n\n\n(0,_fetchWeather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('lisbon')\n  .then((data) => {\n    console.log(data);\n  });\n\n\n//# sourceURL=webpack://more-like-closed-weather/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weather */ \"./src/weather.js\");\n/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./display */ \"./src/display.js\");\n\n\n\n\n\n(0,_weather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('london').then(_display__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n\n\n//# sourceURL=webpack://more-like-closed-weather/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/weather.js":
+/*!************************!*\
+  !*** ./src/weather.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nasync function fetchWeatherOf(city) {\n  const key = 'cbe457e67bfce0754a5fcca5bb09dd23';\n  const locationResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`);\n  const locationData = await locationResponse.json();\n\n  const { lon, lat } = locationData[0];\n\n  const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`);\n  const weatherData = await weatherResponse.json();\n\n  return weatherData;\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchWeatherOf);\n\n\n//# sourceURL=webpack://more-like-closed-weather/./src/weather.js?");
 
 /***/ }),
 
