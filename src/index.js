@@ -1,3 +1,8 @@
 import './style.scss';
 
-console.log('ok');
+import fetchWeatherOf from './fetchWeather';
+
+fetchWeatherOf('lisbon')
+  .then((data) => {
+    console.log(data);
+  });
