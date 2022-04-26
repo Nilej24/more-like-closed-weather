@@ -8,24 +8,51 @@
   <form>
     <label for="search-city">
       <i class="bi bi-search"></i>
-      <input type="search" id="search-city" placeholder="City Name">
+      <input type="text" id="search-city" placeholder="City Name" value="london">
     </label>
     <fieldset>
-      <legend>Temperature Unit</legend>
-      <input type="radio" id="celsius" value="metric" name="temp-unit">
-      <label for="celsius">°C</label>
-      <input type="radio" id="fahrenheit" value="imperial" name="temp-unit">
-      <label for="fahrenheit">°F</label>
+      <legend>Units System</legend>
+      <label for="met">
+        <input type="radio" id="met" value="metric" name="units" checked>
+        Metric (°C)
+      </label>
+      <label for="imp">
+      <input type="radio" id="imp" value="imperial" name="units">
+        Imperial (°F)
+      </label>
     </fieldset>
     <button type="submit">Search for a City</button>
   </form>
-  <div id="location"></div>
-  <div id="country"></div>
-  <div id="weather"></div>
-  <div id="temp"></div>
-  <div id="temp-feels-like"></div>
-  <div id="humidity"></div>
-  <div id="windspeed"></div>
-  <div id="pressure"></div>
+  <div class="main">
+    <h1><div id="location"></div></h1>
+    <h2><div id="country"></div></h2>
+    <img id="weather-icon" >
+    <h3 id="weather"></h3>
+    <h3 id="temp"></h3>
+  </div>
+  <div class="extra">
+    <div class="info">
+      <div class="title">FEELS LIKE</div>
+      <div id="temp-feels-like"></div>
+    </div>
+    <div class="info">
+      <div class="title">HUMIDITY</div>
+      <div id="humidity"></div>
+    </div>
+    <div class="info">
+      <div class="title">WIND</div>
+      <div id="wind"></div>
+    </div>
+    <div class="info">
+      <div class="title">PRESSURE</div>
+      <div id="pressure"></div>
+    </div>
+  </div>
+  <div class="loading hidden">
+    LOADING...
+  </div>
+  <div class="error hidden">
+    ERROR: CITY NOT FOUND
+  </div>
 </body>
 </html>
